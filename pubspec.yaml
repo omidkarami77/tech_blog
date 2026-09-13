@@ -77,6 +77,8 @@ flutter:
     - family: dana
       fonts:
         - asset: assets/fonts/dana.ttf
+        - asset: assets/fonts/dana_reg.ttf
+          weight: 600
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
