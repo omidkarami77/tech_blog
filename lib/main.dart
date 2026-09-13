@@ -32,22 +32,51 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          color: Colors.black,
-          onPressed: () {
-            // Handle back button press
-          },
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16.0),
+          child: IconButton(
+          
+            icon: const Icon(
+            
+              size: 30,
+              Icons.menu),
+            color: Colors.black,
+            onPressed: () {
+              // Handle back button press
+            },
+          ),
         ),
-      actions   :[ IconButton(
-          icon: const Icon(Icons.search),
-          color: Colors.black,
-          onPressed: () {
-            // Handle search button press
-          },
+      actions   :[
+        
+        Padding(
+          padding: const EdgeInsets.only(right: 8.0),
+          child: Text(
+            
+            textAlign: TextAlign.right,"قیمت به روز ارز و طلا", style: TextStyle(
+            fontFamily: 'dana', fontSize: 20,fontWeight: FontWeight.bold,
+            
+            color: Colors.black),),
         ),
+        
+         Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+           child: IconButton(
+           icon: Image.asset(
+             'assets/images/icon.png',
+             width: 40,
+             height: 40,
+           ),
+            color: Colors.black,
+            onPressed: () {
+              // Handle search button press
+            },
+                   ),
+         ),
+
+
+        
       ],
-        title: Text("قیمت به روز ارز و طلا", style: TextStyle(color: Colors.black),),
+        
       ),
       body: const Center(
         child: Text('Hello, World!'),
