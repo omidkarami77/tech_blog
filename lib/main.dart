@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart'
+    as flutter_localizations;
 void main() {
   runApp( MaterialApp(
     home: Scaffold(
@@ -16,7 +17,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-    
+    localizationsDelegates: flutter_localizations.GlobalMaterialLocalizations.delegates,
+    supportedLocales: [
+    // Locale('en'), // English
+    Locale('fa'), // Persian
+  ],
+
+
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      fontFamily: 'dana',
+
+
+      textTheme: const TextTheme(
+       
+        headlineMedium: TextStyle(fontFamily: 'dana',fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black),
+        headlineSmall: TextStyle(fontFamily: 'dana'),
+        headlineLarge: TextStyle(fontFamily: 'dana'),
+      ),
+      ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -33,49 +52,47 @@ class MyHomePage extends StatelessWidget {
       backgroundColor: Color(int.parse('0xFFF3F3F3')),
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16.0),
-          child: IconButton(
-          
-            icon: const Icon(
-            
-              size: 30,
-              Icons.menu),
-            color: Colors.black,
-            onPressed: () {
-              // Handle back button press
-            },
+        leadingWidth: 270,
+        leading: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Row(
+              children: [
+                 IconButton(
+                  icon: const Icon(Icons.menu, size: 30, color: Colors.black),
+                  onPressed: () {
+                    // Handle menu button press
+                  },
+                ),
+             const SizedBox(width: 6),
+               
+                const Text(
+                  'قیمت به روز ارز و طلا',
+                  style: TextStyle(
+                    fontFamily: 'dana',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+               
+              ],
+            ),
           ),
         ),
-      actions   :[
-        
-        Padding(
-          padding: const EdgeInsets.only(right: 8.0),
-          child: Text(
-            
-            textAlign: TextAlign.right,"قیمت به روز ارز و طلا", style: TextStyle(
-            fontFamily: 'dana', fontSize: 20,fontWeight: FontWeight.bold,
-            
-            color: Colors.black),),
-        ),
-        
-         Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-           child: IconButton(
-           icon: Image.asset(
-             'assets/images/icon.png',
-             width: 40,
-             height: 40,
-           ),
-            color: Colors.black,
-            onPressed: () {
-              // Handle search button press
-            },
-                   ),
-         ),
-
-
-        
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: IconButton(
+              icon: Image.asset(
+                'assets/images/icon.png',
+                width: 40,
+                height: 40,
+              ),
+              onPressed: () {},
+            ),
+          ),
       ],
         
       ),
@@ -84,18 +101,11 @@ class MyHomePage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 25),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
            
             children: [
                 
-          Text(
-            
-            textAlign: TextAlign.right,"نرخ ارز آزاد چیست ", style: TextStyle(
-            fontFamily: 'dana', fontSize: 20,fontWeight: FontWeight.bold,
-            
-            color: Colors.black),),
-           
-            Padding(
+                     Padding(
               padding: const EdgeInsets.only(right: 16.0),
              child: IconButton(
              icon: Image.asset(
@@ -110,6 +120,18 @@ class MyHomePage extends StatelessWidget {
                      ),
            ),
 
+
+
+
+
+          Text(
+            
+            textAlign: TextAlign.right,"نرخ ارز آزاد چیست ", style: TextStyle(
+            fontFamily: 'dana', fontSize: 20,fontWeight: FontWeight.bold,
+            
+            color: Colors.black),),
+           
+       
           
           
           
@@ -146,11 +168,11 @@ class MyHomePage extends StatelessWidget {
                padding: const EdgeInsets.symmetric(horizontal: 25.0),
                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: const [
-                 Text('تغییر', style: TextStyle(color: Colors.white,fontFamily: "dana",fontSize: 16,fontWeight: FontWeight.bold),),
+                 children: const [                                  Text('نام آزاد ارز', style: TextStyle(color: Colors.white,fontFamily: "dana",fontSize: 16,fontWeight: FontWeight.bold),),
+
                    Text('قیمت', style: TextStyle(color: Colors.white,fontFamily: "dana",fontSize: 16,fontWeight: FontWeight.bold),),
-               
-                                  Text('نام آزاد ارز', style: TextStyle(color: Colors.white,fontFamily: "dana",fontSize: 16,fontWeight: FontWeight.bold),),
+                                Text('تغییر', style: TextStyle(color: Colors.white,fontFamily: "dana",fontSize: 16,fontWeight: FontWeight.bold),),
+
                
                  ],
                ),
@@ -162,24 +184,15 @@ class MyHomePage extends StatelessWidget {
 
 
 
-
-
-
- Arz_item(),
- SizedBox(height: 12,),
- Arz_item(),
- SizedBox(height: 12,),
- Arz_item(),
- SizedBox(height: 12,),
- Arz_item(),
- SizedBox(height: 12,),
- Arz_item(),
- SizedBox(height: 12,),
- Arz_item(),
-
-
-
-
+Expanded(
+  child: ListView.builder(
+    itemCount: 6,
+    itemBuilder: (context, index) => Padding(
+      padding: EdgeInsets.only(bottom: index == 5 ? 0 : 12),
+      child: const ArzItem(),
+    ),
+  ),
+),
 
 
 
@@ -196,8 +209,8 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class Arz_item extends StatelessWidget {
-  const Arz_item({
+class ArzItem extends StatelessWidget {
+  const ArzItem({
     super.key,
   });
 
@@ -232,11 +245,14 @@ class Arz_item extends StatelessWidget {
                   child: Row(
                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
-                    Text('+5', style: TextStyle(color: Colors.green,fontFamily: "dana",fontSize: 16,fontWeight: FontWeight.bold),),
-                      Text('26000', style: TextStyle(color: Colors.black,fontFamily: "dana",fontSize: 16,),),
+
                   
                                      Text('یورو', style: TextStyle(color: Colors.black,fontFamily: "dana",fontSize: 16,fontWeight: FontWeight.bold),),
-                  
+                      Text('26000', style: TextStyle(color: Colors.black,fontFamily: "dana",fontSize: 16,),),
+
+
+                    Text('+5', style: TextStyle(color: Colors.green,fontFamily: "dana",fontSize: 16,fontWeight: FontWeight.bold),),
+
                     ],
                   ),
                 ),
