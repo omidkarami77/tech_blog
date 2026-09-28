@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart'
     as flutter_localizations;
+
 void main() {
-  runApp( MaterialApp(
-    home: Scaffold(
-      body: const Center(
-        child: MyApp(),
-      ),
+  runApp(
+    MaterialApp(
+      home: Scaffold(body: const Center(child: MyApp())),
     ),
-  ));
+  );
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -17,24 +17,27 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-    localizationsDelegates: flutter_localizations.GlobalMaterialLocalizations.delegates,
-    supportedLocales: [
-    // Locale('en'), // English
-    Locale('fa'), // Persian
-  ],
-
+      localizationsDelegates:
+          flutter_localizations.GlobalMaterialLocalizations.delegates,
+      supportedLocales: [
+        // Locale('en'), // English
+        Locale('fa'), // Persian
+      ],
 
       theme: ThemeData(
         primarySwatch: Colors.blue,
-      fontFamily: 'dana',
+        fontFamily: 'dana',
 
-
-      textTheme: const TextTheme(
-       
-        headlineMedium: TextStyle(fontFamily: 'dana',fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black),
-        headlineSmall: TextStyle(fontFamily: 'dana'),
-        headlineLarge: TextStyle(fontFamily: 'dana'),
-      ),
+        textTheme: const TextTheme(
+          headlineMedium: TextStyle(
+            fontFamily: 'dana',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+          headlineSmall: TextStyle(fontFamily: 'dana'),
+          headlineLarge: TextStyle(fontFamily: 'dana'),
+        ),
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -59,14 +62,14 @@ class MyHomePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
               children: [
-                 IconButton(
+                IconButton(
                   icon: const Icon(Icons.menu, size: 30, color: Colors.black),
                   onPressed: () {
                     // Handle menu button press
                   },
                 ),
-             const SizedBox(width: 6),
-               
+                const SizedBox(width: 6),
+
                 const Text(
                   'قیمت به روز ارز و طلا',
                   style: TextStyle(
@@ -76,7 +79,6 @@ class MyHomePage extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-               
               ],
             ),
           ),
@@ -93,116 +95,231 @@ class MyHomePage extends StatelessWidget {
               onPressed: () {},
             ),
           ),
-      ],
-        
+        ],
       ),
       body: Column(
         children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 25),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-           
-            children: [
-                
-                     Padding(
-              padding: const EdgeInsets.only(right: 16.0),
-             child: IconButton(
-             icon: Image.asset(
-               'assets/images/question.png',
-               width: 40,
-               height: 40,
-             ),
-              color: Colors.black,
-              onPressed: () {
-                // Handle search button press
-              },
-                     ),
-           ),
+          Padding(
+            padding: const EdgeInsets.only(top: 25),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
 
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 16.0),
+                  child: IconButton(
+                    icon: Image.asset(
+                      'assets/images/question.png',
+                      width: 40,
+                      height: 40,
+                    ),
+                    color: Colors.black,
+                    onPressed: () {
+                      // Handle search button press
+                    },
+                  ),
+                ),
 
+                Text(
+                  textAlign: TextAlign.right,
+                  "نرخ ارز آزاد چیست ",
+                  style: TextStyle(
+                    fontFamily: 'dana',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
 
-
-
-          Text(
-            
-            textAlign: TextAlign.right,"نرخ ارز آزاد چیست ", style: TextStyle(
-            fontFamily: 'dana', fontSize: 20,fontWeight: FontWeight.bold,
-            
-            color: Colors.black),),
-           
-       
-          
-          
-          
-          
-            ],
+                    color: Colors.black,
+                  ),
+                ),
+              ],
             ),
-        ),
+          ),
 
-         Padding(
-           padding: const EdgeInsets.symmetric(horizontal: 30.0),
-           child: Text(style: const TextStyle(
-    fontFamily: 'dana',
-    fontSize: 16,
-    fontWeight: FontWeight.w600,
-    color: Colors.black,
-  ),
-              textAlign: TextAlign.right
-              ,"نرخ ارز در معاملات نقدی و رایج روزانه است معاملات نقدی معاملاتی هستند که خریدار و فروشنده به محض انجام معامله ارز و ریال را باهم تبادل می نمایند  ", 
-           
-           
-           
-           
-           
-              )),
-         Padding(
-           padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
-           child: Container(
-            height: 30,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),  
-             color: Color(int.parse('0xff828282')),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            child: Text(
+              style: const TextStyle(
+                fontFamily: 'dana',
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
+              textAlign: TextAlign.right,
+              "نرخ ارز در معاملات نقدی و رایج روزانه است معاملات نقدی معاملاتی هستند که خریدار و فروشنده به محض انجام معامله ارز و ریال را باهم تبادل می نمایند  ",
             ),
-             child: Padding(
-               padding: const EdgeInsets.symmetric(horizontal: 25.0),
-               child: Row(
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 30.0,
+              vertical: 20.0,
+            ),
+            child: Container(
+              height: 30,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                color: Color(int.parse('0xff828282')),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: const [                                  Text('نام آزاد ارز', style: TextStyle(color: Colors.white,fontFamily: "dana",fontSize: 16,fontWeight: FontWeight.bold),),
+                  children: const [
+                    Text(
+                      'نام آزاد ارز',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "dana",
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
 
-                   Text('قیمت', style: TextStyle(color: Colors.white,fontFamily: "dana",fontSize: 16,fontWeight: FontWeight.bold),),
-                                Text('تغییر', style: TextStyle(color: Colors.white,fontFamily: "dana",fontSize: 16,fontWeight: FontWeight.bold),),
+                    Text(
+                      'قیمت',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "dana",
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'تغییر',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "dana",
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
 
-               
-                 ],
-               ),
-             ),
-           ),
-         ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 60,
+              itemBuilder: (context, index) => Padding(
+                padding: EdgeInsets.only(bottom: index == 5 ? 0 : 12),
+                child: const ArzItem(),
+              ),
+            ),
+          ),
+
+          Container(
+            decoration: BoxDecoration(
+              color: const Color(0xffF3F3F3),
+              
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 40.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+              
+                children: [
+                
+                
+                
+                Expanded(
+                  child: Container(
+                    height: 54,
+                    margin: const EdgeInsets.symmetric(horizontal: 30.0),
+                    decoration: BoxDecoration(
+                      color: const Color(0xffE8E8E8),
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+
+                    child:Row(children: [
 
 
 
 
 
-Expanded(
-  child: ListView.builder(
-    itemCount: 6,
-    itemBuilder: (context, index) => Padding(
-      padding: EdgeInsets.only(bottom: index == 5 ? 0 : 12),
-      child: const ArzItem(),
-    ),
-  ),
-),
+                        SizedBox(
+                    width: 154,
+                    height: 54,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(int.parse('0xffCAC1FF')),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                      ),
+                      child:  Padding(
+                        padding: EdgeInsets.symmetric(
+                         
+                         
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/images/ref.png',
+                              width: 24,
+                              height: 24,
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              'بروز رسانی',
+                              style: TextStyle(
+                                fontFamily: 'dana',
+                                fontSize: 16,
+                             
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
 
+      SizedBox(width: 20), // Add some spacing between the button and the text
 
+                        Text(
+                          'آخرین بروزرسانی: 12:30',
+                          style: TextStyle(
+                            fontFamily: 'dana',
+                            fontSize: 16,
+                          
+                            color: Colors.black,
+                          ),
+                        ),
 
-
-
-
-
-
-
-
+                      
+                    ],)
+                  ),
+                ),
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                  
+            
+            
+            
+            
+            
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -210,53 +327,67 @@ Expanded(
 }
 
 class ArzItem extends StatelessWidget {
-  const ArzItem({
-    super.key,
-  });
+  const ArzItem({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0,),
-              child: Container(
-               height: 54,
-               decoration: BoxDecoration(
-                 color: Colors.white,
-                 borderRadius: BorderRadius.circular(30.0),
-                 border: Border.all(
-                   color: const Color(0xFFE0E0E0),
-                   width: 1.2,
-                 ),
-                 boxShadow: const [
-                   BoxShadow(
-                     color: Colors.white,
-                     offset: Offset(-3, -3),
-                     blurRadius: 6,
-                   ),
-                   BoxShadow(
-                     color: Color(0xFFBDBDBD),
-                     offset: Offset(3, 3),
-                     blurRadius: 6,
-                   ),
-                 ],
-               ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-
-                  
-                                     Text('یورو', style: TextStyle(color: Colors.black,fontFamily: "dana",fontSize: 16,fontWeight: FontWeight.bold),),
-                      Text('26000', style: TextStyle(color: Colors.black,fontFamily: "dana",fontSize: 16,),),
-
-
-                    Text('+5', style: TextStyle(color: Colors.green,fontFamily: "dana",fontSize: 16,fontWeight: FontWeight.bold),),
-
-                    ],
-                  ),
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      child: Container(
+        height: 54,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30.0),
+          border: Border.all(color: const Color(0xFFE0E0E0), width: 1.2),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.white,
+              offset: Offset(-3, -3),
+              blurRadius: 6,
+            ),
+            BoxShadow(
+              color: Color(0xFFBDBDBD),
+              offset: Offset(3, 3),
+              blurRadius: 6,
+            ),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              Text(
+                'یورو',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: "dana",
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            );
+              Text(
+                '26000',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: "dana",
+                  fontSize: 16,
+                ),
+              ),
+
+              Text(
+                '+5',
+                style: TextStyle(
+                  color: Colors.green,
+                  fontFamily: "dana",
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
